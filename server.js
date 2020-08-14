@@ -11,6 +11,12 @@ const mockUserData=[
     { name: 'Mark' },
     { name: 'Jill' }
 ]
+
+const mockPlaceData=[
+    { name: 'Lepop' },
+    { name: 'Friends Food' },
+    { name: 'Pizza Doree' }
+]
 // GET REQUEST
 app.get('/users/:id',function(req,res){
     console.log(req.params.id)
@@ -21,13 +27,21 @@ app.get('/users/:id',function(req,res){
     })
 })
 
+app.get('/places',function(req,res){
+    res.json({
+        success: true,
+        message: 'all the places',
+        places: mockPlaceData
+    })
+})
+
 //POST REQUEST
 app.post('/login',function(req,res){
     const username= req.body.username;
     const password= req.body.password;
 
     const mockUsername="billyTheKid";
-    const mockPassword="SuperSecret";
+    const mockPassword="SuperSecret.";
 
     if (username===mockUsername && password===mockPassword){
         res.json({
